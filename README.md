@@ -11,3 +11,4 @@ Pour travailler dessus, avec Eclipse, installez les plugins:
 
 Puis, File => Import => Projects From Git.
 Quand demandé, saisissez "git@github.com:xabufr/Talkative.git" comme URL de repository, puis direct suivant.
+test
