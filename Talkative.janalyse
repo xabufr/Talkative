@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Mcd nom="Nouveau MCD" version="2">
+  <All-entite>
+    <Entite id="0" x="187" y="98" nom="UTILISATEUR" commentaire="">
+      <Propriete nom="id" commentaire="" type="NONE" cle_primaire="true" null="false" auto-incremente="true" unique="false" />
+      <Propriete nom="nom" commentaire="" type="NONE" cle_primaire="false" null="false" auto-incremente="false" unique="true" />
+      <Propriete nom="prenom" commentaire="" type="NONE" cle_primaire="false" null="false" auto-incremente="false" unique="false" />
+      <Propriete nom="email" commentaire="" type="NONE" cle_primaire="false" null="false" auto-incremente="false" unique="true" />
+      <Propriete nom="password" commentaire="" type="NONE" cle_primaire="false" null="false" auto-incremente="false" unique="false" />
+    </Entite>
+    <Entite id="1" x="658" y="105" nom="SITE" commentaire="">
+      <Propriete nom="id" commentaire="" type="NONE" cle_primaire="false" null="false" auto-incremente="false" unique="false" />
+      <Propriete nom="nom" commentaire="" type="NONE" cle_primaire="false" null="false" auto-incremente="false" unique="false" />
+      <Propriete nom="url" commentaire="" type="NONE" cle_primaire="false" null="false" auto-incremente="false" unique="false" />
+    </Entite>
+    <Entite id="2" x="625" y="409" nom="ARTICLE" commentaire="">
+      <Propriete nom="id" commentaire="" type="NONE" cle_primaire="false" null="false" auto-incremente="false" unique="false" />
+      <Propriete nom="url" commentaire="" type="NONE" cle_primaire="false" null="false" auto-incremente="false" unique="false" />
+    </Entite>
+    <Entite id="3" x="151" y="443" nom="COMMENTAIRE" commentaire="">
+      <Propriete nom="id" commentaire="" type="INT" taille0="0" cle_primaire="true" null="false" auto-incremente="true" unique="false" />
+      <Propriete nom="titre" commentaire="" type="VARCHAR" taille0="50" cle_primaire="false" null="false" auto-incremente="false" unique="false" />
+      <Propriete nom="time" commentaire="" type="TIME" cle_primaire="false" null="false" auto-incremente="false" unique="false" />
+      <Propriete nom="texte" commentaire="" type="TEXT" cle_primaire="false" null="false" auto-incremente="false" unique="false" />
+      <Propriete nom="id_ref_com" commentaire="" type="INT" taille0="0" cle_primaire="false" null="true" auto-incremente="false" unique="false" />
+    </Entite>
+  </All-entite>
+  <All-relation>
+    <Relation id="4" x="9" y="260" nom="TAGGER" commentaire="">
+      <Propriete nom="type" commentaire="" type="INT" taille0="10" cle_primaire="false" null="false" auto-incremente="false" unique="false" />
+    </Relation>
+    <Relation id="5" x="407" y="65" nom="ADMINISTRER" commentaire="" />
+    <Relation id="6" x="415" y="484" nom="Relation2" commentaire="" />
+    <Relation id="7" x="375" y="273" nom="VOTE" commentaire="">
+      <Propriete nom="vote" commentaire="" type="INT" taille0="0" cle_primaire="false" null="false" auto-incremente="false" unique="false" />
+    </Relation>
+    <Relation id="8" x="633" y="266" nom="Relation4" commentaire="" />
+    <Relation id="9" x="197" y="261" nom="Relation5" commentaire="" />
+    <Relation id="10" x="429" y="173" nom="Relation6" commentaire="" />
+  </All-relation>
+  <All-cardinalite>
+    <Cardinalite min="0" max="-1" relatif="false" style="Deux cassures">
+      <Entite id="0" />
+      <Relation id="4" />
+    </Cardinalite>
+    <Cardinalite min="0" max="-1" relatif="false" style="Deux cassures">
+      <Entite id="0" />
+      <Relation id="9" />
+    </Cardinalite>
+    <Cardinalite min="0" max="1" relatif="false" style="Deux cassures">
+      <Entite id="3" />
+      <Relation id="9" />
+    </Cardinalite>
+    <Cardinalite min="0" max="-1" relatif="false" style="Deux cassures">
+      <Entite id="3" />
+      <Relation id="4" />
+    </Cardinalite>
+    <Cardinalite min="1" max="1" relatif="false" style="Deux cassures">
+      <Entite id="3" />
+      <Relation id="6" />
+    </Cardinalite>
+    <Cardinalite min="0" max="-1" relatif="false" style="Deux cassures">
+      <Entite id="2" />
+      <Relation id="6" />
+    </Cardinalite>
+    <Cardinalite min="1" max="1" relatif="false" style="Deux cassures">
+      <Entite id="2" />
+      <Relation id="8" />
+    </Cardinalite>
+    <Cardinalite min="0" max="-1" relatif="false" style="Deux cassures">
+      <Entite id="1" />
+      <Relation id="8" />
+    </Cardinalite>
+    <Cardinalite min="1" max="1" relatif="false" style="Deux cassures">
+      <Entite id="1" />
+      <Relation id="10" />
+    </Cardinalite>
+    <Cardinalite min="0" max="-1" relatif="false" style="Deux cassures">
+      <Entite id="0" />
+      <Relation id="10" />
+    </Cardinalite>
+    <Cardinalite min="0" max="-1" relatif="false" style="Deux cassures">
+      <Entite id="0" />
+      <Relation id="5" />
+    </Cardinalite>
+    <Cardinalite min="1" max="-1" relatif="false" style="Deux cassures">
+      <Entite id="1" />
+      <Relation id="5" />
+    </Cardinalite>
+    <Cardinalite min="0" max="-1" relatif="false" style="Deux cassures">
+      <Entite id="0" />
+      <Relation id="7" />
+    </Cardinalite>
+    <Cardinalite min="0" max="-1" relatif="false" style="Deux cassures">
+      <Entite id="2" />
+      <Relation id="7" />
+    </Cardinalite>
+  </All-cardinalite>
+  <All-heritage />
+  <All-contrainte />
+  <All-commentaire />
+</Mcd>
