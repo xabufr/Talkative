@@ -2,7 +2,7 @@ Créer utilisateur (intégrer au site ?)
 Poster, lire, lister
 
 Lister les commentaires
-URI = api/getCommentaires.json
+URI = api/comment/get.json
 Parameters = uid, sid, pid
 Method = GET
 Return
