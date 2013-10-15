@@ -6,7 +6,7 @@
 	<artifactId>talkative</artifactId>
 	<version>1.0-SNAPSHOT</version>
 	<packaging>war</packaging>
-	
+
 	<name>Talkative</name>
 	<description>
 	Le projet Talkative permet aux bloggeurs et aux fournisseurs de contenu sur le Web 
@@ -45,12 +45,30 @@
 		</dependency>
 	</dependencies>
 
+	<developers>
+		<developer>
+			<email>damien.gabrielle@epsi.fr</email>
+			<name>Damien</name>
+		</developer>
+		<developer>
+			<email>enzo.sandre@epsi.fr</email>
+			<name>Enzo</name>
+		</developer>
+		<developer>
+			<email>a.curatolo@epsi.fr</email>
+			<name>Anaël</name>
+		</developer>
+		<developer>
+			<email>thomas.loubiou@epsi.fr</email>
+			<name>Thomas</name>
+		</developer>
+	</developers>
+
 	<build>
 		<plugins>
 			<plugin>
-				<!-- le plugin pour démarrer TomEE depuis la ligne de commande avec maven :
-					mvn package tomee:start
-				 -->
+				<!-- le plugin pour démarrer TomEE depuis la ligne de commande avec maven 
+					: mvn package tomee:start -->
 				<groupId>org.apache.openejb.maven</groupId>
 				<artifactId>tomee-maven-plugin</artifactId>
 				<version>1.0.1</version>
