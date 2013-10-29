@@ -18,4 +18,30 @@ Return
    Error (uid/sid non valides, site non inscrit)
       HTTP CODE: 401
       JSON CONTENT: 
-          STATUS: unknow_site | unknow_user
+          STATUS: unknow_sit | unknow_user
+
+
+Inscription d'un éditeur au service Talkative
+URI = api/user/
+Method = POST
+Parameters = pseud,o email, password
+Return
+   Success:
+      HTTP CODE: 201 
+      CONTENT:
+         {
+            UID:
+         }
+      HTTP CODE: 409
+      CONTENT:
+      -
+      Error (Utilisateur déjà existant)
+      
+      HTTP CODE: 412
+      CONTENT:
+      {
+         InvalidFields : []
+         
+      }
+      Error (mot de passe / mail / pseudo non valide)
+      
