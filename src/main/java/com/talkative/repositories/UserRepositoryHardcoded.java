@@ -3,11 +3,16 @@ package com.talkative.repositories;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.ejb.Singleton;
+import javax.ws.rs.WebApplicationException;
+import javax.ws.rs.core.Response.Status;
+
 import com.talkative.exceptions.AlreadyExistsException;
 import com.talkative.exceptions.NotFoundException;
 import com.talkative.models.User;
 
 
+@Singleton
 public class UserRepositoryHardcoded implements UserRepository {
 
 	private List<User> users;
@@ -35,7 +40,7 @@ public class UserRepositoryHardcoded implements UserRepository {
 				return user;
 			}
 		}
-		throw new NotFoundException();
+		throw new WebApplicationException(Status.NOT_FOUND);
 	}
 	
 
