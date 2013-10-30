@@ -2,8 +2,7 @@ Créer utilisateur (intégrer au site ?)
 Poster, lire, lister
 
 Lister les commentaires
-URI = api/comment/get.json
-Parameters = uid, sid, pid
+URI = api/users/{user}/sites/{site}/articles/{article}/comments
 Method = GET
 Return
    Success no content:
@@ -22,9 +21,9 @@ Return
 
 
 Inscription d'un éditeur au service Talkative
-URI = api/user/
+URI = api/users/
 Method = POST
-Parameters = pseud,o email, password
+Parameters = pseudo, email, password
 Return
    Success:
       HTTP CODE: 201 
