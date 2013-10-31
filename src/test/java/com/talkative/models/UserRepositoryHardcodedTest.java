@@ -23,10 +23,10 @@ public class UserRepositoryHardcodedTest {
 	@Test
 	public void test() {
 		assertEquals(null, repositoryHardcoded.load(2));
-		assertEquals(null, repositoryHardcoded.loadByUid("uidD"));
-		assertNotEquals(null, repositoryHardcoded.loadByUid("uid"));
-		assertNotEquals(null, repositoryHardcoded.loadByUid("uId"));
-		assertNotEquals(null, repositoryHardcoded.loadByUid("UID"));
+		assertEquals(null, repositoryHardcoded.loadByLogin("uidD"));
+		assertNotEquals(null, repositoryHardcoded.loadByLogin("uid"));
+		assertNotEquals(null, repositoryHardcoded.loadByLogin("uId"));
+		assertNotEquals(null, repositoryHardcoded.loadByLogin("UID"));
 		assertNotEquals(null, repositoryHardcoded.load(1));
 	}
 
