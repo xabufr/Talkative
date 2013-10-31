@@ -5,45 +5,26 @@ import java.util.List;
 
 public class User extends Object {
 	private long id;
-	private String uid;
-	private String lastName;
-	private String firstName;
-	private List<WebSite> ownedWebSites;
+	private String login;
 	private String password;
 	private String email;
+	private List<WebSite> ownedWebSites;
 
 	public User() {
 		ownedWebSites = new ArrayList<WebSite>();
 	}
 
-	public User(String lastName2, String firstName2, String email) {
-		this.firstName = firstName2;
-		this.lastName = lastName2;
-		this.setEmail(email);
+	public User(String login, String email) {
+		this.login = login;
+		this.email = email;
 	}
-
+	
 	public long getId() {
 		return id;
 	}
 
 	public void setId(long id) {
 		this.id = id;
-	}
-
-	public String getLastName() {
-		return lastName;
-	}
-
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
-
-	public String getFirstName() {
-		return firstName;
-	}
-
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
 	}
 
 	public List<WebSite> getOwnedWebSites() {
@@ -54,20 +35,20 @@ public class User extends Object {
 		this.ownedWebSites = ownedWebSites;
 	}
 
-	public String getUid() {
-		return uid;
-	}
-
-	public void setUid(String uid) {
-		this.uid = uid;
-	}
-
 	public String getPassword() {
 		return password;
 	}
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public String getLogin() {
+		return login;
+	}
+
+	public void setLogin(String login) {
+		this.login = login;
 	}
 
 	public String getEmail() {
@@ -83,11 +64,9 @@ public class User extends Object {
 		if (!(o instanceof User))
 			return false;
 		User oUser = (User) o;
-		if (oUser.getUid() != null && this.getUid() != null) {
-			return oUser.getUid().equalsIgnoreCase(this.getUid());
+		if (oUser.getLogin() != null && this.getLogin() != null) {
+			return oUser.getLogin().equalsIgnoreCase(this.getLogin());
 		}
-		return oUser.getEmail().equalsIgnoreCase(getEmail())
-				&& oUser.getLastName().equalsIgnoreCase(this.getLastName())
-				&& oUser.getFirstName().equalsIgnoreCase(this.getFirstName());
+		return oUser.getEmail().equalsIgnoreCase(getEmail());
 	}
 }

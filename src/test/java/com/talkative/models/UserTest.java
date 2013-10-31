@@ -28,14 +28,6 @@ public class UserTest {
 	}
 
 	@Test
-	public void test() {
-		
-		assertEquals( null, user.getLastName() );
-		user.setLastName("coucou");
-		assertEquals( "coucou", user.getLastName() );
-	}
-
-	@Test
 	public void returnsHTTPCodeWhenUserTriesToConnect() {
 		
 		WebClient webClient = WebClient.create("http://localhost:8080").path("/talkative/api/comment/get.json"); // ?uid=0&sid=1&pid=1");
