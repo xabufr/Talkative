@@ -4,10 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.Singleton;
-import javax.ws.rs.WebApplicationException;
-import javax.ws.rs.core.Response;
-import javax.ws.rs.core.Response.Status;
-
 import com.talkative.exceptions.AlreadyExistsException;
 import com.talkative.exceptions.NotFoundException;
 import com.talkative.models.User;
@@ -36,7 +32,7 @@ public class UserRepositoryHardcoded implements UserRepository {
 	@Override
 	public User loadByLogin(String login) {
 		for( User user : users){
-			if(user.getLogin()==login){
+			if(user.getLogin().equals(login)){
 				return user;
 			}
 		}

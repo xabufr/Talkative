@@ -43,7 +43,6 @@ public class UsersResource {
 	}
 
 	@Path("{user}/sites")
-	@GET
 	public SitesResource articlesResource(@PathParam("user") String uid) {
 		User user = userRepository.loadByLogin(uid);
 		return new SitesResource(user);
