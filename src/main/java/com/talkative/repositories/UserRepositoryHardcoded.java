@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.ejb.Singleton;
 import javax.ws.rs.WebApplicationException;
+import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
 import com.talkative.exceptions.AlreadyExistsException;
@@ -40,7 +41,7 @@ public class UserRepositoryHardcoded implements UserRepository {
 				return user;
 			}
 		}
-		throw new WebApplicationException(Status.NOT_FOUND);
+		throw new NotFoundException();
 	}
 	
 
