@@ -6,4 +6,6 @@ public interface UserRepository extends GenericRepository<User> {
 	
 	User loadByLogin(String login);
 	User createUser(String login, String password, String email);
+	boolean containsUserUID(long uid);
+	boolean containsUserLogin(String login);
 }

@@ -8,8 +8,10 @@ import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
+import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.ResponseBuilder;
+import javax.ws.rs.core.Response.Status;
 
 import com.talkative.models.User;
 import com.talkative.repositories.UserRepository;
@@ -24,8 +26,8 @@ public class UsersResource {
 		this.userRepository = new UserRepositoryHardcoded();
 	}
 
-	@Path("/")
 	@POST
+	@Path("/")
 	public Response createUser(
 			@FormParam("login") String login,
 			@FormParam("password") String password,
@@ -41,15 +43,26 @@ public class UsersResource {
 		
 		return responseBuilder.build();
 	}
+	
+//	@GET
+//	@Path("{user}")
+//	public User getUser(@PathParam("user") String uid) {
+//		return this.userRepository.loadByLogin(uid);
+//	}
 
-	@Path("{user}/sites")
-	public SitesResource articlesResource(@PathParam("user") String uid) {
-		User user = userRepository.loadByLogin(uid);
-		return new SitesResource(user);
+	@GET
+	@Path("{user}")
+	public UserResource articlesResource(@PathParam("user") String login) {
+		
+		if (!this.userRepository.containsUserLogin(login))
+			throw new WebApplicationException(Status.NOT_FOUND);
+		
+		User user = userRepository.loadByLogin(login);
+		return new UserResource(user);
 	}
 	
-	@Path("list")
 	@GET
+	@Path("list")
 	public String printAllUsers() {
 		
 		List<User> users = this.userRepository.loadAll();
@@ -62,14 +75,8 @@ public class UsersResource {
 		return liste;
 	}
 	
-	@Path("{user}")
 	@GET
-	public User getUser(@PathParam("user") String uid) {
-		return this.userRepository.loadByLogin(uid);
-	}
-	
 	@Path("formulaire")
-	@GET
 	public String getForm() {
 		
 		return "<form action=\"http://localhost:8080/talkative/api/users\" method=\"post\">"
@@ -79,6 +86,4 @@ public class UsersResource {
 				+ "<input type=\"submit\" />"
 				+ "</form>";
 	}
-	
-	
 }

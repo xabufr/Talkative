@@ -6,6 +6,7 @@ import com.talkative.models.WebSite;
 
 public class SiteResource {
 	private WebSite site;
+	
 	public SiteResource(WebSite site) {
 		this.site = site;
 	}
