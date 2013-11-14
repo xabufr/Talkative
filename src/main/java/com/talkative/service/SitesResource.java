@@ -1,26 +1,29 @@
 package com.talkative.service;
 
-import javax.ejb.EJB;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
-import javax.ws.rs.WebApplicationException;
-import javax.ws.rs.core.Response.Status;
 
+import com.talkative.models.User;
 import com.talkative.models.WebSite;
+import com.talkative.repositories.ArticleRepository;
 import com.talkative.repositories.WebSiteRepository;
 
 public class SitesResource {
 	
-	@EJB
 	private WebSiteRepository webSiteRepository;
+	private ArticleRepository articleRepository;
+	
+	private User user;
+	
+	public SitesResource(User user, WebSiteRepository webSiteRepository, ArticleRepository articleRepository) {
+		this.webSiteRepository = webSiteRepository;
+		this.articleRepository = articleRepository;
+		this.user = user;
+	}
 	
 	@Path("{site}")
-	public SiteResource getSiteResource(@PathParam("site") String domain) {
-		
-		if (!webSiteRepository.containsDomain(domain))
-			throw new WebApplicationException(Status.NOT_FOUND);
-		
-		WebSite site = webSiteRepository.loadByDomain(domain);
-		return new SiteResource(site);
+	public SiteResource getSiteResource(@PathParam("site") String sid) {
+		WebSite site = webSiteRepository.load(user, sid);
+		return new SiteResource(site, articleRepository);
 	}
 }

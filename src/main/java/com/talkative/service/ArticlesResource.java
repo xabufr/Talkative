@@ -1,6 +1,5 @@
 package com.talkative.service;
 
-import javax.ejb.EJB;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.WebApplicationException;
@@ -14,11 +13,11 @@ public class ArticlesResource {
 	
 	private WebSite webSite;
 	
-	@EJB
 	ArticleRepository articleRepository;
 	
-	public ArticlesResource(WebSite webSite) {
+	public ArticlesResource(WebSite webSite, ArticleRepository articleRepository) {
 		this.webSite = webSite;
+		this.articleRepository = articleRepository;
 	}
 	
 	@Path("{article}")
@@ -28,6 +27,6 @@ public class ArticlesResource {
 			throw new WebApplicationException(Status.NOT_FOUND);
 		
 		Article article = this.articleRepository.loadArticleFromSiteAndTitle(webSite, title);
-		return new ArticleResource(article);
+		return new ArticleResource(article, articleRepository);
 	}
 }

@@ -1,6 +1,5 @@
 package com.talkative.service;
 
-import javax.ejb.EJB;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.core.Response;
@@ -12,11 +11,11 @@ public class ArticleResource {
 	
 	private Article article;
 	
-	@EJB
-	private ArticleRepository article_repository;
+	private ArticleRepository articleRepository;
 	
-	public ArticleResource(Article article) {
+	public ArticleResource(Article article, ArticleRepository articleRepository) {
 		this.article = article;
+		this.articleRepository = articleRepository;
 	}
 
 	@GET

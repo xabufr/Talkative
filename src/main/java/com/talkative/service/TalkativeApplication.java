@@ -12,9 +12,6 @@ public class TalkativeApplication extends Application {
 	public Set<Class<?>> getClasses() {
 		HashSet<Class<?>> classes = new HashSet<Class<?>>();
 		classes.add(UsersResource.class);
-		classes.add(SitesResource.class);
-		classes.add(ArticlesResource.class);
-//		classes.add(CommentsResource.class);
 		return classes;
 	}
 	@Override

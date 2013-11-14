@@ -62,7 +62,7 @@ public class Article {
 		Article article = (Article) a;
 		
 		if (article.author != null && this.author != null && article.title != null && article.text != null && this.title != null && this.text != null)
-			return article.getAuthor().equals(this.author) && article.title == this.title && article.id == this.id;
+			return article.getAuthor().equals(this.author) && article.title.equals(this.title) && article.id == this.id;
 		
 		return false;
 	}

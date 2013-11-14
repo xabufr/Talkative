@@ -1,4 +1,4 @@
-package com.talkative.repositories;
+package com.talkative.repositories.hardcoded;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,6 +8,7 @@ import javax.ejb.Singleton;
 import com.talkative.exceptions.AlreadyExistsException;
 import com.talkative.exceptions.NotFoundException;
 import com.talkative.models.User;
+import com.talkative.repositories.UserRepository;
 
 @Singleton
 public class UserRepositoryHardcoded implements UserRepository {
@@ -70,7 +71,7 @@ public class UserRepositoryHardcoded implements UserRepository {
 	@Override
 	public boolean containsUserLogin(String login) {
 		for (User u : users){
-			if (u.getLogin() == login){
+			if (u.getLogin().equalsIgnoreCase(login)){
 				return true;
 			}
 		}

@@ -6,7 +6,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.talkative.repositories.UserRepositoryHardcoded;
+import com.talkative.repositories.hardcoded.UserRepositoryHardcoded;
 
 public class UserRepositoryHardcodedTest {
 	private UserRepositoryHardcoded repositoryHardcoded;
