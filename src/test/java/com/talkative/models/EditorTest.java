@@ -16,7 +16,7 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import com.talkative.service.UsersResource;
+import com.talkative.resource.UsersResource;
 
 @RunWith(ApplicationComposer.class)
 @EnableServices("jaxrs")

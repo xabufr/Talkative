@@ -3,15 +3,18 @@ package com.talkative.models;
 import java.util.ArrayList;
 import java.util.List;
 
-public class User extends Object {
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement
+public class User {
 	private long id;
 	private String login;
 	private String password;
 	private String email;
-	private List<WebSite> ownedWebSites;
+	private List<Website> ownedWebSites;
 
 	public User() {
-		ownedWebSites = new ArrayList<WebSite>();
+		ownedWebSites = new ArrayList<Website>();
 	}
 
 	public User(String login, String email) {
@@ -27,11 +30,11 @@ public class User extends Object {
 		this.id = id;
 	}
 
-	public List<WebSite> getOwnedWebSites() {
+	public List<Website> getOwnedWebSites() {
 		return ownedWebSites;
 	}
 
-	public void setOwnedWebSites(List<WebSite> ownedWebSites) {
+	public void setOwnedWebSites(List<Website> ownedWebSites) {
 		this.ownedWebSites = ownedWebSites;
 	}
 

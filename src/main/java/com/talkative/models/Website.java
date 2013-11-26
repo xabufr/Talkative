@@ -1,6 +1,10 @@
 package com.talkative.models;
 
-public class WebSite {
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement
+public class Website {
+	
 	private long id;
 	private String domain;
 	private String sid;
