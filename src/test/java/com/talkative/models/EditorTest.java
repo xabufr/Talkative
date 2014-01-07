@@ -12,7 +12,7 @@ import org.apache.openejb.junit.ApplicationComposer;
 import org.apache.openejb.testing.Classes;
 import org.apache.openejb.testing.EnableServices;
 import org.apache.openejb.testing.Module;
-import org.junit.Assert;
+import static org.junit.Assert.*;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -34,26 +34,39 @@ public class EditorTest {
 		WebClient webClient = this.createWebClient();
 		
 		try{
-			webClient.path("/users/unknown").get(String.class);
+			webClient.path("users/unknown").get(String.class);
 		}catch( Exception e ){
-			Assert.assertEquals(Status.NOT_FOUND.getStatusCode(), webClient.getResponse().getStatus());
+			assertEquals(Status.NOT_FOUND.getStatusCode(), webClient.getResponse().getStatus());
 		}
 	}
 	
-
 	@Test
 	public void canCreatesUser() {
 
 		WebClient webClient = this.createWebClient();
-		webClient.path("/users/").post("login=toto&password=12345678&email=toto@toto.fr", Response.class);
-		Assert.assertEquals(Status.CREATED.getStatusCode(), webClient.getResponse().getStatus());
+		User user = new User();
+		user.setLogin("toto");
+		user.setEmail("toto@toto.fr");
+		user.setPassword("123456789");
+
+		webClient.path("users").post(user, Response.class);
+		assertEquals(Status.CREATED.getStatusCode(), webClient.getResponse().getStatus());
 		
-		webClient.path("/users/").post("login=toto&password=12345678&email=toto@toto.fr", Response.class);
-		Assert.assertEquals(Status.CONFLICT.getStatusCode(), webClient.getResponse().getStatus());
+		webClient.path("users").post("login=toto&password=12345678&email=toto@toto.fr", Response.class);
+		assertEquals(Status.CONFLICT.getStatusCode(), webClient.getResponse().getStatus());
+	}
+	
+	@Test
+	public void returnsErrorWhileInscriptionIfLoginMissing() {
+		
+		WebClient webClient = this.createWebClient();
+		webClient.path("users").post("login=damien&password=12345678&email=toto@toto.fr", Response.class);
+		assertEquals(Status.CONFLICT.getStatusCode(), webClient.getResponse().getStatus());
+		
 	}
 	
 	private WebClient createWebClient() {
-        WebClient client = WebClient.create("http://localhost:4204/talkative"); // /api");
+        WebClient client = WebClient.create("http://localhost:4204/talkative"); // /api/");
         ClientConfiguration config = WebClient.getConfig(client);
         config.getInInterceptors().add(new LoggingInInterceptor());
         config.getOutInterceptors().add(new LoggingOutInterceptor());

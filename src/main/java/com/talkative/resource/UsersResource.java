@@ -31,6 +31,9 @@ public class UsersResource {
 		
 		UserRepository repo = repositoryFactory.getUserRepo();
 		
+		if (!user.isValid())
+			return Response.status(Status.NOT_ACCEPTABLE.getStatusCode()).entity(user.getMissingElements()).build();
+		
 		if (repo.loginExistsInRepository(user.getLogin()) || repo.emailExistsInRepository(user.getEmail()))
 			return Response.noContent().status(Status.CONFLICT).build();
 		

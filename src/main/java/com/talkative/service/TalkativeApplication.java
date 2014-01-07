@@ -17,7 +17,7 @@ public class TalkativeApplication extends Application {
 		classes.add(UsersResource.class);
 		return classes;
 	}
-//	
+	
 //	@Override
 //	public Set<Object> getSingletons() {
 //		HashSet<Object> singletons = new HashSet<>();

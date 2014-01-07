@@ -5,12 +5,14 @@ import java.util.List;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
+import com.talkative.resource.InputValidator;
+
 @XmlRootElement
 public class User {
 	private long id;
-	private String login;
-	private String password;
-	private String email;
+	private String login = "";
+	private String password = "";
+	private String email = "";
 	private List<Website> ownedWebSites;
 
 	public User() {
@@ -71,5 +73,26 @@ public class User {
 			return oUser.getLogin().equalsIgnoreCase(this.getLogin());
 		}
 		return oUser.getEmail().equalsIgnoreCase(getEmail());
+	}
+
+	public boolean isValid() {
+		return InputValidator.isAValidEMail(email)
+				&& InputValidator.isAValidLogin(login)
+				&& InputValidator.isAValidPassword(password);
+	}
+	
+	public String getMissingElements() {
+		String message = "";
+		
+		if (!InputValidator.isAValidLogin(login))
+			message += "login ";
+		
+		if (!InputValidator.isAValidEMail(email))
+			message += "email ";
+		
+		if (!InputValidator.isAValidPassword(password))
+			message += "password ";
+
+		return message;
 	}
 }
