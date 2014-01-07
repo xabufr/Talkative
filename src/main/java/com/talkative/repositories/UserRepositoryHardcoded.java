@@ -18,6 +18,8 @@ public class UserRepositoryHardcoded implements UserRepository {
 	public UserRepositoryHardcoded (){
 		users = new ArrayList<User>();
 		lastUserId = 0;
+		User toto = new User("toto", "toto@toto.fr");
+		users.add(toto);
 	}
 	
 	@Override

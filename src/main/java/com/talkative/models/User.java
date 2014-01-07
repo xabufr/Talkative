@@ -87,4 +87,9 @@ public class User {
 
 		return message;
 	}
+	
+	@Override
+	public int hashCode() {
+		return login.hashCode();
+	}
 }
