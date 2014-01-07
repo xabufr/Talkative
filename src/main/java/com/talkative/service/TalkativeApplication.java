@@ -6,7 +6,6 @@ import java.util.Set;
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
 
-import com.talkative.repositories.WebsiteRepositoryHardCoded;
 import com.talkative.resource.UsersResource;
 
 @ApplicationPath("api")

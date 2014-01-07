@@ -2,20 +2,20 @@ package com.talkative.resource;
 
 import javax.ws.rs.Path;
 
-import com.talkative.models.Website;
+import com.talkative.models.User;
 
 public class ArticlesResource {
 	
 	private RepositoryFactory repositoryFactory;
-	private Website site;
+	private User user;
 	
-	public ArticlesResource(RepositoryFactory factory, Website site) {
+	public ArticlesResource(RepositoryFactory factory, User user) {
 		this.repositoryFactory = factory;
-		this.site = site;
+		this.user = user;
 	}
 	
 	@Path("{article}")
 	public ArticleResource getArticleResource() {
-		return new ArticleResource(site);
+		return new ArticleResource(user);
 	}
 }

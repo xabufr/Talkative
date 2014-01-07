@@ -49,8 +49,8 @@ public class UserResource {
 		return Response.noContent().status(Status.CONFLICT).build();
 	}
 	
-	@Path("sites")
-	public WebsitesResource getSitesResource() {
-		return new WebsitesResource(repositoryFactory, repositoryFactory.getUserRepo().loadByLogin(login));
+	@Path("articles")
+	public ArticlesResource getSitesResource() {
+		return new ArticlesResource(repositoryFactory, repositoryFactory.getUserRepo().loadByLogin(login));
 	}
 }

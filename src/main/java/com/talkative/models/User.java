@@ -13,10 +13,10 @@ public class User {
 	private String login = "";
 	private String password = "";
 	private String email = "";
-	private List<Website> ownedWebSites;
+	private List<Article> ownedArticle;
 
 	public User() {
-		ownedWebSites = new ArrayList<Website>();
+		ownedArticle = new ArrayList<Article>();
 	}
 
 	public User(String login, String email) {
@@ -30,14 +30,6 @@ public class User {
 
 	public void setId(long id) {
 		this.id = id;
-	}
-
-	public List<Website> getOwnedWebSites() {
-		return ownedWebSites;
-	}
-
-	public void setOwnedWebSites(List<Website> ownedWebSites) {
-		this.ownedWebSites = ownedWebSites;
 	}
 
 	public String getPassword() {
